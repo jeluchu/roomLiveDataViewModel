@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RoomLiveData</string>
+
+    <string name="hint_word">Palabras…</string>
+    <string name="button_save">Guardar</string>
+    <string name="empty_not_saved">Palabra no guardada</string>
+    <string name="palabra">Palabra</string>
+    <string name="descripcion">descripcion</string>
+</resources>
