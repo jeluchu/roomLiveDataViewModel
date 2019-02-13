@@ -37,16 +37,16 @@ dependencies {
 
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
 
-    // Room components
+    // ROOM COMPONETS
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
     kapt "android.arch.persistence.room:compiler:$rootProject.roomVersion"
     androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
 
-    // Lifecycle components
+    // LIFECYCLE COMPONENTS
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     kapt "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
 
-    // Coroutines
+    // COROUTINES
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
 

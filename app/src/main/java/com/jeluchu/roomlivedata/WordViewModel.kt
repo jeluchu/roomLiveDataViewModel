@@ -33,4 +33,15 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         super.onCleared()
         parentJob.cancel()
     }
+
+    // BORRAR TODOS LOS DATOS
+    fun deleteAll() {
+        repository.deleteAll()
+    }
+
+    // BORRAR UN SOLO DATO
+    fun deleteWord(word: Word) {
+        repository.deleteWord(word)
+    }
+
 }
