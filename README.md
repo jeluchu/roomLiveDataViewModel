@@ -4,6 +4,15 @@
 [![Download](https://img.shields.io/badge/Gradle-4.10.1-brightgreen.svg?style=flat&logo=android)](https://services.gradle.org/distributions/gradle-4.10.1-all.zip)
 [![API](https://img.shields.io/badge/J%C3%A9luchu-1.0.0-blue.svg?style=flat&logo=ello)](https://play.google.com/store/apps/dev?id=7449422814338081261&hl=es_ES)
 
+### FEATURES OF ROOM DATABASE APP
+
+ - [x] Read Data
+ - [x] Add Data
+ - [x] Delete All Data
+ - [x] Delete One Item Data
+ - [x] Edit Data
+ - [x] Swipe Actions
+
 ### INTRODUCTION
 The purpose of [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) is to provide guidance on app architecture, with libraries for common tasks like lifecycle management and data persistence. That's why to facilitate it I made an example in Kotlin 100%.
 
