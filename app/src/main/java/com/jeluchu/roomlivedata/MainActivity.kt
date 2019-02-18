@@ -1,6 +1,7 @@
 package com.jeluchu.roomlivedata
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -25,12 +26,10 @@ import android.support.v4.graphics.drawable.DrawableCompat
 import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.graphics.drawable.Drawable
-
-
-
-
-
-
+import android.text.Editable
+import android.view.Gravity
+import android.widget.EditText
+import kotlinx.android.synthetic.main.recyclerview_word.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -85,7 +84,55 @@ class MainActivity : AppCompatActivity() {
                         wordViewModel.deleteWord(myWord)
                         wordViewModel.allWords
                     } else {
-                        Toast.makeText(this@MainActivity, "Borrando: " + myWord.word, Toast.LENGTH_LONG).show()
+                       /* val builder = AlertDialog.Builder(applicationContext)
+                        val userNameEdit = EditText(this@MainActivity)
+
+                        builder.setTitle("Androidly Alert")
+                            .setView(userNameEdit)
+                        userNameEdit.hint = "Introduce una palabra"
+
+                        builder.setMessage("We have a message")
+                        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                        builder.setPositiveButton(android.R.string.ok) { dialog, which ->
+                            Toast.makeText(applicationContext,
+                                android.R.string.yes, Toast.LENGTH_SHORT).show()
+
+                            wordViewModel.updateWord(myWord)
+                            wordViewModel.allWords
+
+                        }
+
+                        builder.setNegativeButton(android.R.string.no) { dialog, _ -> dialog.cancel() }
+
+                        builder.show() */
+
+                        val builder = AlertDialog.Builder(this@MainActivity)
+
+                        val userEdit = EditText(this@MainActivity)
+                        userEdit.hint = "Introduce un nombre"
+                        userEdit.gravity = Gravity.CENTER_HORIZONTAL
+                        userEdit.ellipsize
+
+                        // CREAR EL DIALOGO
+                        builder.setTitle("Actualizar")
+                            .setView(userEdit)
+                            .setMessage("Edita tu palabra y actualizala dándole al botón de 'Guardar'\n")
+                            .setPositiveButton("Guardar") { _, _ ->
+                                val regionName = userEdit.text.toString()
+
+                                if (regionName.isEmpty()) {
+                                    Toast.makeText(this@MainActivity, "El campo no puede estar vacío", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    var word = Word(position, regionName)
+                                    wordViewModel.updateWord(word)
+                                    wordViewModel.allWords
+                                }
+                            }
+                            .setNegativeButton("Cancelar") { dialog, _ -> dialog.cancel() }
+
+                        // MOSTRAR
+                        builder.show()
                     }
                 }
 

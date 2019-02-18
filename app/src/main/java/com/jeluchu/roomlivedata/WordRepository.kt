@@ -46,4 +46,17 @@ class WordRepository(private val wordDao: WordDao) {
         }
     }
 
+    /* -------------- ACTUALIZAR UN SOLO DATO ---------------- */
+
+    fun update(word: Word) {
+        updateWordAsyncTask(wordDao).execute(word)
+    }
+
+    private class updateWordAsyncTask internal constructor(private val mAsyncTaskDao: WordDao) :
+        AsyncTask<Word, Void, Void>() {
+        override fun doInBackground(vararg params: Word?): Void? {
+            mAsyncTaskDao.update(params[0]!!)
+            return null
+        }
+    }
 }

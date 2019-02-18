@@ -19,8 +19,13 @@ interface WordDao {
     fun deleteAll()
 
     // ACTUALIZAR DATOS
+    //Sin Query
     @Update
     fun update(word: Word)
+ 
+    //Con Query
+    @Query("UPDATE word_table SET word = :word WHERE id == :id")
+    fun updateItem(word: String, id: Int)
 
     // BORRAR ITEM
     @Delete
