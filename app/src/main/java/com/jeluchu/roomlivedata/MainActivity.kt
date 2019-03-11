@@ -2,34 +2,25 @@ package com.jeluchu.roomlivedata
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
+import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
-import android.support.v7.widget.helper.ItemTouchHelper
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import android.graphics.RectF
-import android.graphics.Bitmap
-import android.support.v4.graphics.drawable.DrawableCompat
-import android.os.Build
-import android.support.v4.content.ContextCompat
-import android.graphics.drawable.Drawable
-import android.text.Editable
-import android.view.Gravity
 import android.widget.EditText
-import kotlinx.android.synthetic.main.recyclerview_word.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerview)
         val adapter = WordListAdapter(this)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
 
@@ -69,14 +60,14 @@ class MainActivity : AppCompatActivity() {
                 0,
                 ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
                 override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
+                    recyclerView: androidx.recyclerview.widget.RecyclerView,
+                    viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder,
+                    target: androidx.recyclerview.widget.RecyclerView.ViewHolder
                 ): Boolean {
                     return false
                 }
 
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                override fun onSwiped(viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     val myWord = adapter.getWordAtPosition(position)
 
@@ -84,28 +75,6 @@ class MainActivity : AppCompatActivity() {
                         wordViewModel.deleteWord(myWord)
                         wordViewModel.allWords
                     } else {
-                       /* val builder = AlertDialog.Builder(applicationContext)
-                        val userNameEdit = EditText(this@MainActivity)
-
-                        builder.setTitle("Androidly Alert")
-                            .setView(userNameEdit)
-                        userNameEdit.hint = "Introduce una palabra"
-
-                        builder.setMessage("We have a message")
-                        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
-
-                        builder.setPositiveButton(android.R.string.ok) { dialog, which ->
-                            Toast.makeText(applicationContext,
-                                android.R.string.yes, Toast.LENGTH_SHORT).show()
-
-                            wordViewModel.updateWord(myWord)
-                            wordViewModel.allWords
-
-                        }
-
-                        builder.setNegativeButton(android.R.string.no) { dialog, _ -> dialog.cancel() }
-
-                        builder.show() */
 
                         val builder = AlertDialog.Builder(this@MainActivity)
 
@@ -124,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                                 if (regionName.isEmpty()) {
                                     Toast.makeText(this@MainActivity, "El campo no puede estar vacío", Toast.LENGTH_SHORT).show()
                                 } else {
-                                    var word = Word(position, regionName)
+                                    val word = Word(position, regionName)
                                     wordViewModel.updateWord(word)
                                     wordViewModel.allWords
                                 }
@@ -139,8 +108,8 @@ class MainActivity : AppCompatActivity() {
                 // ACTION SWIPE RECYCLERVIEW
                 override fun onChildDraw(
                     c: Canvas,
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
+                    recyclerView: androidx.recyclerview.widget.RecyclerView,
+                    viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder,
                     dX: Float,
                     dY: Float,
                     actionState: Int,
@@ -261,28 +230,4 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
-
-    /*private fun itemClicked(){
-
-        // CREACIÓN DEL ALERT VIEW
-        val builder = AlertDialog.Builder(this@MainActivity)
-
-
-            builder.setTitle("Préstamo")
-            builder.setMessage("¿Vas coger este teléfono?")
-
-            builder.setPositiveButton("Sí"){
-                    dialog, which ->
-                Toast.makeText(applicationContext, "${device.modelo} prestado correctamente", Toast.LENGTH_SHORT).show()
-            }
-
-            builder.setNegativeButton("No"){
-                    dialog, which ->
-            }
-
-            val dialog: AlertDialog = builder.create()
-            dialog.show()
-
-    }
-} */
 

@@ -1,7 +1,7 @@
 package com.jeluchu.roomlivedata
 
-import android.arch.lifecycle.LiveData
-import android.support.annotation.WorkerThread
+import androidx.lifecycle.LiveData
+import androidx.annotation.WorkerThread
 import android.os.AsyncTask
 
 

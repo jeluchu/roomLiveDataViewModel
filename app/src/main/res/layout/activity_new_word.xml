@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".NewWordActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewWordActivity">
 
     <ImageView
             android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:src="@drawable/ic_text"
             android:contentDescription="@string/descripcion"/>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_word"
             android:layout_margin="16dp"
             android:layout_width="match_parent"
@@ -32,22 +33,22 @@
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             app:errorEnabled="true"
-            app:boxStrokeWidth="2dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            app:boxStrokeWidth="2dp">
 
-    <android.support.design.widget.TextInputEditText
-                android:id="@+id/etWord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:inputType="textCapWords"
-                android:maxLength="10"
-                android:maxLines="0"
-                android:textColor="@color/colorPrimary"
-                android:hint="@string/palabra"
-                android:theme="@style/Theme.MaterialComponents"/>
+    <EditText
+            android:id="@+id/etWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textCapWords"
+            android:maxLength="10"
+            android:maxLines="0"
+            android:textColor="@color/colorPrimary"
+            android:hint="@string/palabra"
+            android:theme="@style/Theme.MaterialComponents"
+            tools:ignore="Autofill"/>
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
@@ -61,4 +62,4 @@
         android:text="@string/button_save"
         android:textColor="@color/buttonLabel" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

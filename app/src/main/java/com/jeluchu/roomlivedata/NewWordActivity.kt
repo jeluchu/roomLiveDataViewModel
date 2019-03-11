@@ -4,16 +4,12 @@ package com.jeluchu.roomlivedata
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
-import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
-import android.view.inputmethod.EditorInfo
 import android.widget.Button
-import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_new_word.*
 
 class NewWordActivity : AppCompatActivity() {
-
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
